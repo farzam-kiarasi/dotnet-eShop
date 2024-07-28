@@ -34,8 +34,5 @@ public class CustomerBasket
         }
     }
 
-    public void ClearBasket()
-    {
-        _items.Clear();
-    }
+    public void ClearBasket() => _items.Clear();
 }

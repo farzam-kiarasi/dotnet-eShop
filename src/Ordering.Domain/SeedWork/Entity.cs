@@ -25,20 +25,11 @@ public abstract class Entity
         _domainEvents.Add(eventItem);
     }
 
-    public void RemoveDomainEvent(INotification eventItem)
-    {
-        _domainEvents?.Remove(eventItem);
-    }
+    public void RemoveDomainEvent(INotification eventItem) => _domainEvents?.Remove(eventItem);
 
-    public void ClearDomainEvents()
-    {
-        _domainEvents?.Clear();
-    }
+    public void ClearDomainEvents() => _domainEvents?.Clear();
 
-    public bool IsTransient()
-    {
-        return this.Id == default;
-    }
+    public bool IsTransient() => this.Id == default;
 
     public override bool Equals(object obj)
     {
@@ -80,8 +71,5 @@ public abstract class Entity
             return left.Equals(right);
     }
 
-    public static bool operator !=(Entity left, Entity right)
-    {
-        return !(left == right);
-    }
+    public static bool operator !=(Entity left, Entity right) => !(left == right);
 }

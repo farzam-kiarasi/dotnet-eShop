@@ -76,15 +76,9 @@ internal static class MigrateDbContextExtensions
     private class MigrationHostedService<TContext>(IServiceProvider serviceProvider, Func<TContext, IServiceProvider, Task> seeder)
         : BackgroundService where TContext : DbContext
     {
-        public override Task StartAsync(CancellationToken cancellationToken)
-        {
-            return serviceProvider.MigrateDbContextAsync(seeder);
-        }
+        public override Task StartAsync(CancellationToken cancellationToken) => serviceProvider.MigrateDbContextAsync(seeder);
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            return Task.CompletedTask;
-        }
+        protected override Task ExecuteAsync(CancellationToken stoppingToken) => Task.CompletedTask;
     }
 }
 public interface IDbSeeder<in TContext> where TContext : DbContext

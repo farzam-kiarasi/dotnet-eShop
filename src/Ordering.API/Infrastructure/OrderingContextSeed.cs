@@ -17,8 +17,5 @@ public class OrderingContextSeed: IDbSeeder<OrderingContext>
         await context.SaveChangesAsync();
     }
 
-    private static IEnumerable<CardType> GetPredefinedCardTypes()
-    {
-        return Enumeration.GetAll<CardType>();
-    }
+    private static IEnumerable<CardType> GetPredefinedCardTypes() => Enumeration.GetAll<CardType>();
 }

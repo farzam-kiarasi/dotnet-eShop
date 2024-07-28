@@ -19,8 +19,5 @@ public static class GenericTypeExtensions
         return typeName;
     }
 
-    public static string GetGenericTypeName(this object @object)
-    {
-        return @object.GetType().GetGenericTypeName();
-    }
+    public static string GetGenericTypeName(this object @object) => @object.GetType().GetGenericTypeName();
 }

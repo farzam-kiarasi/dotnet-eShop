@@ -34,10 +34,8 @@ public class PaymentMethod : Entity
         _cardTypeId = cardTypeId;
     }
 
-    public bool IsEqualTo(int cardTypeId, string cardNumber, DateTime expiration)
-    {
-        return _cardTypeId == cardTypeId
+    public bool IsEqualTo(int cardTypeId, string cardNumber, DateTime expiration) =>
+        _cardTypeId == cardTypeId
             && _cardNumber == cardNumber
             && _expiration == expiration;
-    }
 }

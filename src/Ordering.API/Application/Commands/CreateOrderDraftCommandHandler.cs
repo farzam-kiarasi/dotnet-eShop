@@ -25,9 +25,8 @@ public record OrderDraftDTO
     public IEnumerable<OrderItemDTO> OrderItems { get; init; }
     public decimal Total { get; init; }
 
-    public static OrderDraftDTO FromOrder(Order order)
-    {
-        return new OrderDraftDTO()
+    public static OrderDraftDTO FromOrder(Order order) =>
+        new OrderDraftDTO()
         {
             OrderItems = order.OrderItems.Select(oi => new OrderItemDTO
             {
@@ -40,7 +39,6 @@ public record OrderDraftDTO
             }),
             Total = order.GetTotal()
         };
-    }
 }
 
 public record OrderItemDTO

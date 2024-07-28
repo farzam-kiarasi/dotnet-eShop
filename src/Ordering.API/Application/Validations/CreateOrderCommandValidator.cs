@@ -21,13 +21,7 @@ public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
         }
     }
 
-    private bool BeValidExpirationDate(DateTime dateTime)
-    {
-        return dateTime >= DateTime.UtcNow;
-    }
+    private bool BeValidExpirationDate(DateTime dateTime) => dateTime >= DateTime.UtcNow;
 
-    private bool ContainOrderItems(IEnumerable<OrderItemDTO> orderItems)
-    {
-        return orderItems.Any();
-    }
+    private bool ContainOrderItems(IEnumerable<OrderItemDTO> orderItems) => orderItems.Any();
 }
