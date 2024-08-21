@@ -12,10 +12,7 @@ public class BasketService(GrpcBasketClient basketClient)
         return MapToBasket(result);
     }
 
-    public async Task DeleteBasketAsync()
-    {
-        await basketClient.DeleteBasketAsync(new DeleteBasketRequest());
-    }
+    public async Task DeleteBasketAsync() => await basketClient.DeleteBasketAsync(new DeleteBasketRequest());
 
     public async Task UpdateBasketAsync(IReadOnlyCollection<BasketQuantity> basket)
     {

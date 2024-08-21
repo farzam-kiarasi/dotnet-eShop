@@ -1,14 +1,9 @@
 ﻿namespace eShop.Ordering.API.Application.Commands;
 
 // Regular CommandHandler
-public class ShipOrderCommandHandler : IRequestHandler<ShipOrderCommand, bool>
+public class ShipOrderCommandHandler(IOrderRepository orderRepository) : IRequestHandler<ShipOrderCommand, bool>
 {
-    private readonly IOrderRepository _orderRepository;
-
-    public ShipOrderCommandHandler(IOrderRepository orderRepository)
-    {
-        _orderRepository = orderRepository;
-    }
+    private readonly IOrderRepository _orderRepository = orderRepository;
 
     /// <summary>
     /// Handler which processes the command when
@@ -31,18 +26,10 @@ public class ShipOrderCommandHandler : IRequestHandler<ShipOrderCommand, bool>
 
 
 // Use for Idempotency in Command process
-public class ShipOrderIdentifiedCommandHandler : IdentifiedCommandHandler<ShipOrderCommand, bool>
+public class ShipOrderIdentifiedCommandHandler(
+    IMediator mediator,
+    IRequestManager requestManager,
+    ILogger<IdentifiedCommandHandler<ShipOrderCommand, bool>> logger) : IdentifiedCommandHandler<ShipOrderCommand, bool>(mediator, requestManager, logger)
 {
-    public ShipOrderIdentifiedCommandHandler(
-        IMediator mediator,
-        IRequestManager requestManager,
-        ILogger<IdentifiedCommandHandler<ShipOrderCommand, bool>> logger)
-        : base(mediator, requestManager, logger)
-    {
-    }
-
-    protected override bool CreateResultForDuplicateRequest()
-    {
-        return true; // Ignore duplicate requests for processing order.
-    }
+    protected override bool CreateResultForDuplicateRequest() => true; // Ignore duplicate requests for processing order.
 }

@@ -10,9 +10,8 @@ public static class BasketItemExtensions
         }
     }
 
-    public static OrderItemDTO ToOrderItemDTO(this BasketItem item)
-    {
-        return new OrderItemDTO()
+    public static OrderItemDTO ToOrderItemDTO(this BasketItem item) =>
+        new OrderItemDTO()
         {
             ProductId = item.ProductId,
             ProductName = item.ProductName,
@@ -20,5 +19,4 @@ public static class BasketItemExtensions
             UnitPrice = item.UnitPrice,
             Units = item.Quantity
         };
-    }
 }

@@ -4,22 +4,18 @@ using Pgvector;
 
 namespace eShop.Catalog.API.Services;
 
-public sealed class CatalogAI : ICatalogAI
+public sealed class CatalogAI(
+    IWebHostEnvironment environment,
+    ILogger<CatalogAI> logger, 
+    ITextEmbeddingGenerationService embeddingGenerator = null) : ICatalogAI
 {
     private const int EmbeddingDimensions = 384;
-    private readonly ITextEmbeddingGenerationService _embeddingGenerator;
+    private readonly ITextEmbeddingGenerationService _embeddingGenerator = embeddingGenerator;
 
     /// <summary>The web host environment.</summary>
-    private readonly IWebHostEnvironment _environment;
+    private readonly IWebHostEnvironment _environment = environment;
     /// <summary>Logger for use in AI operations.</summary>
-    private readonly ILogger _logger;
-
-    public CatalogAI(IWebHostEnvironment environment, ILogger<CatalogAI> logger, ITextEmbeddingGenerationService embeddingGenerator = null)
-    {
-        _embeddingGenerator = embeddingGenerator;
-        _environment = environment;
-        _logger = logger;
-    }
+    private readonly ILogger _logger = logger;
 
     /// <inheritdoc/>
     public bool IsEnabled => _embeddingGenerator is not null;

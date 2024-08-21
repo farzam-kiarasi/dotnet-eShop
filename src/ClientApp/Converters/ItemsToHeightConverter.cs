@@ -9,8 +9,5 @@ public class ItemsToHeightConverter : BaseConverterOneWay<int, int>
 
     public override int DefaultConvertReturnValue { get; set; } = ItemHeight;
 
-    public override int ConvertFrom(int value, CultureInfo culture)
-    {
-        return value * ItemHeight;
-    }
+    public override int ConvertFrom(int value, CultureInfo culture) => value * ItemHeight;
 }

@@ -7,8 +7,5 @@ public class HasCountConverter : BaseConverterOneWay<int, bool>
 {
     public override bool DefaultConvertReturnValue { get; set; } = false;
 
-    public override bool ConvertFrom(int value, CultureInfo culture)
-    {
-        return value > 0;
-    }
+    public override bool ConvertFrom(int value, CultureInfo culture) => value > 0;
 }

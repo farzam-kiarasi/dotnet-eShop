@@ -6,10 +6,7 @@ public class ServiceAuthenticationException : Exception
     {
     }
 
-    public ServiceAuthenticationException(string content)
-    {
-        Content = content;
-    }
+    public ServiceAuthenticationException(string content) => Content = content;
 
     public string Content { get; }
 }

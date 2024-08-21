@@ -4,9 +4,8 @@ namespace eShop.ClientApp.Helpers;
 
 public static class EasingHelper
 {
-    public static Easing GetEasing(EasingType type)
-    {
-        return type switch
+    public static Easing GetEasing(EasingType type) =>
+        type switch
         {
             EasingType.BounceIn => Easing.BounceIn,
             EasingType.BounceOut => Easing.BounceOut,
@@ -21,5 +20,4 @@ public static class EasingHelper
             EasingType.SpringOut => Easing.SpringOut,
             _ => null
         };
-    }
 }

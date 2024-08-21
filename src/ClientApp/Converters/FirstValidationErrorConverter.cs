@@ -7,8 +7,5 @@ public class FirstValidationErrorConverter : BaseConverterOneWay<IEnumerable<str
 {
     public override string DefaultConvertReturnValue { get; set; } = string.Empty;
 
-    public override string ConvertFrom(IEnumerable<string> value, CultureInfo culture)
-    {
-        return value?.FirstOrDefault() ?? DefaultConvertReturnValue;
-    }
+    public override string ConvertFrom(IEnumerable<string> value, CultureInfo culture) => value?.FirstOrDefault() ?? DefaultConvertReturnValue;
 }

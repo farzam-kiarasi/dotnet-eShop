@@ -1,14 +1,9 @@
 ﻿namespace eShop.Ordering.API.Application.Commands;
 
 // Regular CommandHandler
-public class SetAwaitingValidationOrderStatusCommandHandler : IRequestHandler<SetAwaitingValidationOrderStatusCommand, bool>
+public class SetAwaitingValidationOrderStatusCommandHandler(IOrderRepository orderRepository) : IRequestHandler<SetAwaitingValidationOrderStatusCommand, bool>
 {
-    private readonly IOrderRepository _orderRepository;
-
-    public SetAwaitingValidationOrderStatusCommandHandler(IOrderRepository orderRepository)
-    {
-        _orderRepository = orderRepository;
-    }
+    private readonly IOrderRepository _orderRepository = orderRepository;
 
     /// <summary>
     /// Handler which processes the command when
@@ -41,8 +36,5 @@ public class SetAwaitingValidationIdentifiedOrderStatusCommandHandler : Identifi
     {
     }
 
-    protected override bool CreateResultForDuplicateRequest()
-    {
-        return true; // Ignore duplicate requests for processing order.
-    }
+    protected override bool CreateResultForDuplicateRequest() => true; // Ignore duplicate requests for processing order.
 }

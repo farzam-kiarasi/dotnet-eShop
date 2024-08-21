@@ -6,15 +6,9 @@ public static class ThemeEffects
         BindableProperty.CreateAttached("Circle", typeof(bool), typeof(ThemeEffects), false,
             propertyChanged: OnChanged<CircleEffect, bool>);
 
-    public static bool GetCircle(BindableObject view)
-    {
-        return (bool)view.GetValue(CircleProperty);
-    }
+    public static bool GetCircle(BindableObject view) => (bool)view.GetValue(CircleProperty);
 
-    public static void SetCircle(BindableObject view, bool circle)
-    {
-        view.SetValue(CircleProperty, circle);
-    }
+    public static void SetCircle(BindableObject view, bool circle) => view.SetValue(CircleProperty, circle);
 
 
     private static void OnChanged<TEffect, TProp>(BindableObject bindable, object oldValue, object newValue)

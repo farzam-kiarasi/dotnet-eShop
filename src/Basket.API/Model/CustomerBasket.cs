@@ -8,8 +8,5 @@ public class CustomerBasket
 
     public CustomerBasket() { }
 
-    public CustomerBasket(string customerId)
-    {
-        BuyerId = customerId;
-    }
+    public CustomerBasket(string customerId) => BuyerId = customerId;
 }
